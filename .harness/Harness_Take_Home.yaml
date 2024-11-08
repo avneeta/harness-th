@@ -30,6 +30,14 @@ pipeline:
           execution:
             steps:
               - step:
+                  name: Check User
+                  identifier: check_user
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: |
+                      whoami
+              - step:
                   identifier: BuildAndPushGAR_1
                   type: BuildAndPushGAR
                   name: BuildAndPushGAR_1
