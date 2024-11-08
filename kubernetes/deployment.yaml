@@ -15,7 +15,7 @@ spec:
       containers:
         - name: harness-cicd-container
           # Replace <your-registry>/<your-image-name>:<tag> with your actual image path
-          image: gcr.io/harness-take-home/harness-cicd-image:latest
+          image: cca-registry/harness-cicd-image:latest
           ports:
             - containerPort: 8080
           readinessProbe:

@@ -15,4 +15,5 @@ COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 
 # Start Tomcat server (this will start when the container starts)
-CMD ["whoami"]
+CMD ["cd /Harness/src/main/java/com/example"]
+CMD ["mvn springboot:run"]
