@@ -37,3 +37,4 @@ pipeline:
                     imageName: harness-cicd-image
                     tags:
                       - latest
+                    runAsUser: "0"
