@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harness-cicd-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: harness-cicd
+  template:
+    metadata:
+      labels:
+        app: harness-cicd
+    spec:
+      containers:
+        - name: harness-cicd-container
+          # Replace <your-registry>/<your-image-name>:<tag> with your actual image path
+          image: gcr.io/harness-take-home/harness-cicd-image:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: harness-cicd-service
+spec:
+  selector:
+    app: harness-cicd
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
