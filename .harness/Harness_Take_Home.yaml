@@ -30,14 +30,6 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Build docker image
-                  identifier: Build_docker_image
-                  spec:
-                    connectorRef: gcr
-                    image: gcr.io/harness-take-home/harness-cicd-image:latest
-                    shell: Sh
-              - step:
                   identifier: BuildAndPushGAR_1
                   type: BuildAndPushGAR
                   name: BuildAndPushGAR_1
