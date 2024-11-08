@@ -30,21 +30,21 @@ pipeline:
           execution:
             steps:
               - step:
+                  name: Check User
+                  identifier: check_user
                   type: Run
-                  name: Build docker image
-                  identifier: Build_docker_image
                   spec:
-                    connectorRef: gcr
-                    image: gcr.io/harness-take-home/harness-cicd-image:latest
-                    shell: Sh
+                    shell: Bash
+                    command: |
+                      whoami
               - step:
                   identifier: BuildAndPushGAR_1
                   type: BuildAndPushGAR
                   name: BuildAndPushGAR_1
                   spec:
-                    connectorRef: gcr
+                    connectorRef: account.cca_gcr_connector
                     host: us-central1-docker.pkg.dev
                     projectID: harness-take-home
-                    imageName: gcr.io/harness-cicd-image
+                    imageName: " cca-registry/harness-cicd-image"
                     tags:
-                      - <+pipeline.sequenceId>
+                      - latest
