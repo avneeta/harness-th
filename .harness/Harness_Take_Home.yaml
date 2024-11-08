@@ -23,15 +23,13 @@ pipeline:
             arch: Amd64
           runtime:
             type: Cloud
-            spec:
-              containerSecurityContext:
-                runAsUser: "0"
+            spec: {}
           execution:
             steps:
               - step:
-                  type: BuildAndPushGCR
-                  name: BuildAndPushGCR_1
-                  identifier: BuildAndPushGCR_1
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
                   spec:
                     connectorRef: gcr
                     host: gcr.io
