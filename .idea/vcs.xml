@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/kubernetes/harnesscd-example-apps" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/kubernetes/harnesscd-example-apps/harnesscd-example-apps" vcs="Git" />
   </component>
 </project>
