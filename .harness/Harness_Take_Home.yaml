@@ -34,3 +34,8 @@ pipeline:
                     connectorRef: gcr
                     image: gcr.io/harness-take-home/harness-cicd-image:latest
                     shell: Sh
+                    command: |-
+                      gcloud auth configure-docker gcr.io
+
+                      docker pull \
+                          gcr.io/harness-take-home/harness-cicd-image:latest
