@@ -23,14 +23,20 @@ pipeline:
           cloneCodebase: true
           platform:
             os: Linux
-            arch: Amd64
           runtime:
             type: Cloud
-            spec:
-              containerSecurityContext:
-                runAsUser: "0"
+            spec: {}
           execution:
             steps:
+              - step:
+                  type: Run
+                  name: Build docker image
+                  identifier: Build_docker_image
+                  spec:
+                    connectorRef: gcr
+                    image: gcr.io/harness-take-home/harness-cicd-image:latest
+                    shell: Sh
+                    command: docker build -t gcr.io/harness-take-home/harness-cicd-image:latest .
               - step:
                   identifier: BuildAndPushGAR_1
                   type: BuildAndPushGAR
