@@ -34,7 +34,7 @@ pipeline:
                   type: BuildAndPushGAR
                   name: BuildAndPushGAR_1
                   spec:
-                    connectorRef: gcr
+                    connectorRef: account.google_connector
                     host: us-central1-docker.pkg.dev
                     projectID: harness-take-home
                     imageName: gcr.io/harness-cicd-image
