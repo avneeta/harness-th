@@ -27,15 +27,13 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Build the project
-                  identifier: Run_1
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
                   spec:
                     connectorRef: gcr
-                    image: gcr.io/harness-take-home/harness-cicd-image:latest
-                    shell: Sh
-                    command: |-
-                      gcloud auth configure-docker gcr.io
-
-                      docker pull \
-                          gcr.io/harness-take-home/harness-cicd-image:latest
+                    host: gcr.io
+                    projectID: harness-take-home
+                    imageName: harness-cicd-image
+                    tags:
+                      - latest
