@@ -1,0 +1,39 @@
+pipeline:
+  name: CI pipeline for Harness Take Home Project
+  identifier: CI_pipeline_for_Harness_Take_Home_Project
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Git_source_repository
+        repoName: harness-th
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: account.cca_gcr_connector
+                    host: us-central1-docker.pkg.dev
+                    projectID: harness-take-home
+                    imageName: " cca-registry/harness-cicd-image"
+                    tags:
+                      - latest
