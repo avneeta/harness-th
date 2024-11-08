@@ -28,8 +28,10 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Run_1
+                  name: Build the project
                   identifier: Run_1
                   spec:
+                    connectorRef: account.harnessImage
+                    image: harness-cicd-image:latest
                     shell: Sh
-                    command: echo 'Welcome to Harness'
+                    command: docker build -t gcr.io/harness-take-home/harness-cicd-image:latest .
