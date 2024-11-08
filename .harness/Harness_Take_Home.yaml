@@ -32,5 +32,5 @@ pipeline:
                   identifier: Run_1
                   spec:
                     connectorRef: gcr
-                    image: harness-cicd-image:latest
+                    image: gcr.io/harness-take-home/harness-cicd-image:latest
                     shell: Sh
