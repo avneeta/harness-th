@@ -29,9 +29,9 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: BuildAndPushGAR
-                  name: BuildAndPushGAR_1
-                  identifier: BuildAndPushGAR_1
+                  type: BuildAndPushGCR
+                  name: BuildAndPushGCR_1
+                  identifier: BuildAndPushGCR_1
                   spec:
                     connectorRef: gcr
                     host: gcr.io
