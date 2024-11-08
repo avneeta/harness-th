@@ -1,6 +1,6 @@
 pipeline:
-  name: Harness Take Home
   identifier: Harness_Take_Home
+  name: Harness Take Home
   projectIdentifier: default_project
   orgIdentifier: default
   tags: {}
@@ -9,13 +9,16 @@ pipeline:
       codebase:
         connectorRef: Git_source_repository
         repoName: harness-th
-        build: <+input>
+        build:
+          type: branch
+          spec:
+            branch: main
   stages:
     - stage:
-        name: Build
         identifier: Build
-        description: ""
         type: CI
+        name: Build
+        description: ""
         spec:
           cloneCodebase: true
           platform:
@@ -27,13 +30,21 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: BuildAndPushGAR
-                  name: BuildAndPushGAR_1
-                  identifier: BuildAndPushGAR_1
+                  type: Run
+                  name: Build docker image
+                  identifier: Build_docker_image
                   spec:
                     connectorRef: gcr
-                    host: gcr.io
+                    image: gcr.io/harness-take-home/harness-cicd-image:latest
+                    shell: Sh
+              - step:
+                  identifier: BuildAndPushGAR_1
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: gcr
+                    host: us-central1-docker.pkg.dev
                     projectID: harness-take-home
-                    imageName: harness-cicd-image
+                    imageName: gcr.io/harness-cicd-image
                     tags:
-                      - latest
+                      - <+pipeline.sequenceId>
