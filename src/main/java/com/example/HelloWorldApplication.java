@@ -16,6 +16,6 @@ public class HelloWorldApplication {
 class HelloController {
     @GetMapping("/")
     public String hello() {
-        return "Hello, This is Harness Take Home Project auto-triggered deployment!";
+        return "Hello, This is Harness Take Home Project auto-triggered deployment attempt!";
     }
 }
