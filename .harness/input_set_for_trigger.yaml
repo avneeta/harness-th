@@ -1,5 +1,6 @@
 inputSet:
   name: input set for trigger
+  tags: {}
   identifier: input_set_for_trigger
   orgIdentifier: default
   projectIdentifier: default_project
