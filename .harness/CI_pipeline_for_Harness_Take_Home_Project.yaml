@@ -36,4 +36,4 @@ pipeline:
                     projectID: harness-take-home
                     imageName: " cca-registry/harness-cicd-image"
                     tags:
-                      - ${HARNESS_BUILD_ID}
+                      - <+trigger.artifact.build>
