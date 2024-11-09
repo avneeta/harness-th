@@ -1,0 +1,3 @@
+image:
+  name: cca-registry/harness-cicd-image
+  tag: latest
