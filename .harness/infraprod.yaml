@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infra-prod
+  identifier: infraprod
+  orgIdentifier: default
+  projectIdentifier: default_project
+  environmentRef: Prod
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: harnessk8sconnector
+    namespace: prod-namespace
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
