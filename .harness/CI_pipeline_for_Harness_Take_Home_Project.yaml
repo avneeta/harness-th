@@ -35,4 +35,5 @@ pipeline:
                     host: us-central1-docker.pkg.dev
                     projectID: harness-take-home
                     imageName: " cca-registry/harness-cicd-image"
-                    tags: <+input>
+                    tags:
+                      - latest
