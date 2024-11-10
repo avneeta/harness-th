@@ -14,6 +14,14 @@ pipeline:
           deploymentType: Kubernetes
           service:
             serviceRef: harnessguestbook
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
           environment:
             environmentRef: QA
             deployToAll: false
